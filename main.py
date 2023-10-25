@@ -57,7 +57,7 @@ from langchain.callbacks import get_openai_callback
 import re
 
 st.title("MBTI 측정기")
-Content = st.text_area("아직 친하진 않지만 당신이 궁금해하는 사람에 대해서 알려드릴게요. 그 사람이 작성한 sns 글을 올려주세요", height=200, max_chars=700)
+Content = st.text_area("아직 친하진 않지만 당신이 궁금해하는 사람에 대해서 알려드릴게요. 그 사람이 작성한 sns 글을 올려주세요", height=200, max_chars=2000)
 
 
 if st.button('알아가기'):
@@ -92,4 +92,3 @@ if st.button('알아가기'):
     st.title(sentiment)
     st.divider()
     st.info(cb)
-
