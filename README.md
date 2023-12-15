@@ -196,41 +196,41 @@ output parser 를 사용하는 예시
 
 
     # 1. input 값 요약하기
-    first_prompt = ChatPromptTemplate.from_template(
-        "Summarize the content:"
-        "\n\n{Content}"
-    )
-    chain_one = LLMChain(llm=llm, prompt=first_prompt, 
-                        output_key="summary"
-                        )
+            first_prompt = ChatPromptTemplate.from_template(
+                "Summarize the content:"
+                "\n\n{Content}"
+            )
+            chain_one = LLMChain(llm=llm, prompt=first_prompt, 
+                                output_key="summary"
+                                )
 
 
     # 2. 감정상태 이모지로 표현하기
-    second_prompt = ChatPromptTemplate.from_template(
-        "Chose one of the emogis in the Emogi that repersent writer's sentiment"
-        "\n\n{summary}"
-    )
-    chain_two = LLMChain(llm=llm, prompt=second_prompt, 
-                        output_key="sentiment"
-                        )
+            second_prompt = ChatPromptTemplate.from_template(
+                "Chose one of the emogis in the Emogi that repersent writer's sentiment"
+                "\n\n{summary}"
+            )
+            chain_two = LLMChain(llm=llm, prompt=second_prompt, 
+                                output_key="sentiment"
+                                )
 
     # 3. MBTI 추측하기
-    third_prompt = ChatPromptTemplate.from_template(
-        "Chose one of the Overall MBTI types that repersent writer"
-        "\n\n{summary}"
-    )
-    chain_three = LLMChain(llm=llm, prompt=third_prompt, 
-                        output_key="mbti"
-                        )
+            third_prompt = ChatPromptTemplate.from_template(
+                "Chose one of the Overall MBTI types that repersent writer"
+                "\n\n{summary}"
+            )
+            chain_three = LLMChain(llm=llm, prompt=third_prompt, 
+                                output_key="mbti"
+                                )
 
 
 
     # 1,2,3번 체인을 묶음
-    overall_chain = SequentialChain(
-        chains=[chain_one, chain_two, chain_three],
-        input_variables=["Content"],
-        output_variables=["summary", "sentiment", "mbti"],
-    )
+            overall_chain = SequentialChain(
+                chains=[chain_one, chain_two, chain_three],
+                input_variables=["Content"],
+                output_variables=["summary", "sentiment", "mbti"],
+            )
 
 
     
