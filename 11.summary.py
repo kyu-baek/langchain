@@ -4,7 +4,7 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain.prompts import PromptTemplate
 from langchain.chains.combine_documents.stuff import StuffDocumentsChain
 
-llm = OpenAI(model_name="gpt-3.5-turbo", openai_api_key="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", temperature=0)
+llm = OpenAI(model_name="gpt-3.5-turbo", openai_api_key="sk-", temperature=0)
 
 with open('chat.txt') as f:
     chat = f.read()

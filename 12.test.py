@@ -14,7 +14,7 @@ from langchain.chains import LLMChain
 
 from langchain.chains import SequentialChain
 
-llm = ChatOpenAI(temperature=0.9, openai_api_key="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", model=llm_model)
+llm = ChatOpenAI(temperature=0.9, openai_api_key="sk-", model=llm_model)
 
 first_prompt = ChatPromptTemplate.from_template(
     """

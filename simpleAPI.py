@@ -1,7 +1,7 @@
 import openai
 
 # open ai에서 발급받은 api key를 등록합니다
-OPENAI_YOUR_KEY = "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"
+OPENAI_YOUR_KEY = "sk-"
 openai.api_key = OPENAI_YOUR_KEY
 
 MODEL = "gpt-3.5-turbo"

@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field, validator
 
 import os
 
-os.environ['OPENAI_API_KEY'] = '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'
+os.environ['OPENAI_API_KEY'] = 'sk-'
 
 
 

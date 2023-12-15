@@ -77,7 +77,7 @@ more_messages = [
 ]
 
 
-chat = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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", temperature=0)
+chat = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="sk-", temperature=0)
 
 # from langchain.chains import AnalyzeDocumentChain
 # summary_chain = load_summarize_chain(chat, chain_type="map_reduce")

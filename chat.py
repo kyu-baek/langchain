@@ -21,7 +21,7 @@ from langchain.vectorstores import Chroma
 from langchain.callbacks import get_openai_callback
 import os
 
-os.environ['OPENAI_API_KEY'] = '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'
+os.environ['OPENAI_API_KEY'] = 'sk-'
 
 
 loader = TextLoader("files/nate.txt", encoding="utf-8")

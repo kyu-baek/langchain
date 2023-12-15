@@ -1,7 +1,7 @@
 from langchain import OpenAI
 from langchain.chains.summarize import load_summarize_chain
 
-llm = OpenAI(model_name="gpt-3.5-turbo", openai_api_key="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", temperature=0)
+llm = OpenAI(model_name="gpt-3.5-turbo", openai_api_key="sk-", temperature=0)
 
 # stuff: LLM 한번에 다보냄. 길면 오류
 # map_reduce : 나눠서 요약 후 합쳐서 다시 요약
