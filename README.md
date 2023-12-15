@@ -32,11 +32,12 @@ https://langchain-romina.streamlit.app/
 
 OpenAi 를 사용하는 예시
 
-    from langchain.llms import OpenAI
-    
-    llm = OpenAI(temperature=0.9)
-    text = "what would be a good company name for a company that makes colorful socks?"
-    print(llm(text))
+        from langchain.llms 
+        import OpenAI
+        
+        llm = OpenAI(temperature=0.9)
+        text = "what would be a good company name for a company that makes colorful socks?"
+        print(llm(text))
 
 
 ChatOpenAi 를 사용하는 예시
