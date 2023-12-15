@@ -65,7 +65,7 @@ chat = ChatOpenAI(temperature=0.8)
     ]
     ]
 
-result = chat.generate(more_messages)
+    result = chat.generate(more_messages)
 
 
     **output**
@@ -76,69 +76,69 @@ result = chat.generate(more_messages)
     
 
 3. openAi 사용 요금 조회
-
-
-from langchain.llms import OpenAI
-from langchain.callbacks import get_openai_callback
-
-chat = OpenAI(model_name='gpt-3.5-turbo')
-
-
-# chat("1980년대 메탈 음악 5곡 추천해줘.")
-with get_openai_callback() as cb:
-
-  result = chat("1980년대 메탈 음악 5곡 추천해줘.")
-
-  print(f"Total Tokens: {cb.total_tokens}")
-  print(f"Prompt Tokens: {cb.prompt_tokens}")
-  print(f"Completion Tokens: {cb.completion_tokens}")
-  print(f"Total Cost (USD): ${cb.total_cost}")
-  print(cb)
-
-result
+    
+    
+    from langchain.llms import OpenAI
+    from langchain.callbacks import get_openai_callback
+    
+    chat = OpenAI(model_name='gpt-3.5-turbo')
+    
+    
+    # chat("1980년대 메탈 음악 5곡 추천해줘.")
+    with get_openai_callback() as cb:
+    
+      result = chat("1980년대 메탈 음악 5곡 추천해줘.")
+    
+      print(f"Total Tokens: {cb.total_tokens}")
+      print(f"Prompt Tokens: {cb.prompt_tokens}")
+      print(f"Completion Tokens: {cb.completion_tokens}")
+      print(f"Total Cost (USD): ${cb.total_cost}")
+      print(cb)
+    
+    result
 
 
 
 연결된 질문을 기억하는 대화 체인을 사용하는 예시
 
-from langchain import ConversationChain
-from langchain.llms import OpenAI
-from langchain.memory import ConversationBufferMemory
-
-llm = OpenAI(temperature=0)
-
-conversation = ConversationChain(
-    llm=llm, verbose=True, memory=ConversationBufferMemory()
-)
-
-conversation.predict(input="인공지능에서 Transformer 가 뭐야?")
-print(conversation.memory)
-print("\n")
-
-conversation.predict(input="RNN과 차이를 설명해줘")
-print(conversation.memory)
-
-Summary 체인을 사용해 글을 요약하는 예시
-
-from langchain import OpenAI
-from langchain.chains.summarize import load_summarize_chain
-
-llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0)
-
-# stuff: LLM 한번에 다보냄. 길면 오류
-# map_reduce : 나눠서 요약 후 합쳐서 다시 요약
-# refine :(요약 + 다음문서) =>요약
-# map_rerank: 점수를 매겨서 중요한거로 요약
-summary_chain = load_summarize_chain(llm, chain_type="map_reduce")
-
-from langchain.chains import AnalyzeDocumentChain
-
-summary_doc_chain = AnalyzeDocumentChain(combine_docs_chain=summary_chain)
-
-with open('chat.txt') as f:
-    chat = f.read()
-
-print(summary_doc_chain.run(chat))
+    from langchain import ConversationChain
+    from langchain.llms import OpenAI
+    from langchain.memory import ConversationBufferMemory
+    
+    llm = OpenAI(temperature=0)
+    
+    conversation = ConversationChain(
+        llm=llm, verbose=True, memory=ConversationBufferMemory()
+    )
+    
+    conversation.predict(input="인공지능에서 Transformer 가 뭐야?")
+    print(conversation.memory)
+    print("\n")
+    
+    conversation.predict(input="RNN과 차이를 설명해줘")
+    print(conversation.memory)
+    
+    Summary 체인을 사용해 글을 요약하는 예시
+    
+    from langchain import OpenAI
+    from langchain.chains.summarize import load_summarize_chain
+    
+    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0)
+    
+    # stuff: LLM 한번에 다보냄. 길면 오류
+    # map_reduce : 나눠서 요약 후 합쳐서 다시 요약
+    # refine :(요약 + 다음문서) =>요약
+    # map_rerank: 점수를 매겨서 중요한거로 요약
+    summary_chain = load_summarize_chain(llm, chain_type="map_reduce")
+    
+    from langchain.chains import AnalyzeDocumentChain
+    
+    summary_doc_chain = AnalyzeDocumentChain(combine_docs_chain=summary_chain)
+    
+    with open('chat.txt') as f:
+        chat = f.read()
+    
+    print(summary_doc_chain.run(chat))
 
 output parser 를 사용하는 예시
 
@@ -165,13 +165,13 @@ output parser 를 사용하는 예시
     ])
     chain = chat_prompt | ChatOpenAI() | CommaSeparatedListOutputParser()
 
-# 멀티스레드 환경에서 데이터 보호를 위해 Invoke 함수를 사용하는 것 같습니다.
-chain.invoke({"text": "colors"})
-
-**output**
-
-['red', 'blue', 'green', 'yellow', 'orange']
-
+    # 멀티스레드 환경에서 데이터 보호를 위해 Invoke 함수를 사용하는 것 같습니다.
+    chain.invoke({"text": "colors"})
+    
+    **output**
+    
+    ['red', 'blue', 'green', 'yellow', 'orange']
+    
 
 
 7. 멀티 체인을 사용해 mbti 측정기 서비스 로직 구성 예시 with Streamlit
@@ -283,12 +283,15 @@ https://www.ft.com/content/697d8d32-6ef9-4b4c-835a-3e9dcbdb431a
 일정 부분 발췌해서 MBTI 테스트에 넣어보겠습니다.
 
 
+![image](https://github.com/kyu-baek/langchain/assets/69143394/280224ef-6947-434e-97b4-5d57c94da095)
 
 결과가 나왔습니다!!
+![image](https://github.com/kyu-baek/langchain/assets/69143394/16ceafcd-e878-461b-813a-28d1b7d18fd6)
 
 
 일론 머스크의 인터뷰를 바탕으로 측정한 결과 그의 MBTI 는 INTJ 입니다.
 
+![image](https://github.com/kyu-baek/langchain/assets/69143394/81c40fef-56ed-494d-81a8-5a2d3658bb0e)
 
 
 다행이 실제 MBTI 와 일치하네요 😄
