@@ -1,0 +1,52 @@
+**Board view Json Sample**
+
+
+[
+  {
+    "name": "answer_form",
+    "description": "Understand the context of the conversation and kindly answer each question.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "question_A": {
+          "type": "array",
+          "Length" : "around 200 Korean words",
+          "description": "In the conversation, measure one by each the overall emotional state of 갑 and 을 step by step.",
+          "items": {
+            "Target" : {
+                "enum": ["갑", "을"]
+            },
+            "Measurement": "string",
+        }
+        "required": [
+              "Target",
+              "Measurement"
+            ]
+        },
+        "question_B": {
+            "type": "array",
+            "Length" : "around 800 Korean words",
+            "description": "대화에서 내가 뭘 잘못했는지 잘 모르겠어. Step By Step 으로 상세하게 원인을 분석하고 해결책을 구체적으로 길게 제공해줘.",
+            "items": {
+                "Analysis": {
+                "type": "string",
+                "description": "분석 결과.",
+            },
+            "Solution": {
+              "type": "string",
+              "description": "해결책.",
+            }
+          },
+          "required": [
+            "Analysis",
+            "Solution"
+          ]
+        }
+      },
+      "required": [
+        "question_A",
+        "question_B"
+      ]
+    }
+  }
+]

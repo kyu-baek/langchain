@@ -1,0 +1,78 @@
+1. A 
+프사는 왜 내렸어?
+상태명은 또 뭐야..
+헤어진 것처럼..
+
+2. B 
+없애든 말든 내 마음이지.
+
+3. A  
+그렇게 꼭 싸운 티를 내야돼?
+
+4. B 
+내 공간인데 내 맘대로 사용하지도 못해?
+
+5. A
+아니 너 친구 목록에 우리 부모님도 계시고 친구들도 다 있으니까 그러지. 솔직히 프사랑 상태명만 보면 우리 헤어진 것처럼 보일텐데. 빨리 내려. 
+
+6. B
+너가 내리라면 내가 내려야 해? 넌 항상 그렇게 명령조로 말하더라.
+
+7. A  
+매번 싸울 때마다 그러잖아 너.
+
+8. B
+아 됐어. 그만 얘기해. 나 잘거야.
+
+**Chat view Json Sample**
+[
+  {
+    "name": "answer_form",
+    "description": "Understand the context of the conversation and kindly answer each question.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "question_A": {
+          "type": "array",
+          "description": "각 id에 해당하는 작성자의 감정 상태를 low, medium, high 중에서 선택해줘.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        },
+        "question_B": {
+          "type": "array",
+          "Length": @question_B_length,
+          "description": "각각의 id의 대화 내용에서 @question_B_description. 앞의 요구사항을 id별로 분석한 결과와 해결책을 친절하게 제시해줘.",
+          "items": {
+            "id": {
+              "type": "integer",
+              "description": "대화별 id"
+            },
+            "analysis": {
+              "type": "string",
+              "description": "분석 결과.",
+            },
+            "solution": {
+              "type": "string",
+              "description": "해결책.",
+            }
+          },
+          "required": [
+            "id",
+            "analysis",
+            "solution"
+          ]
+        }
+      },
+      "required": [
+        "question_A",
+        "question_B"
+      ]
+    }
+  }
+]
