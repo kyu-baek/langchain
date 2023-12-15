@@ -32,47 +32,47 @@ https://langchain-romina.streamlit.app/
 
 OpenAi 를 사용하는 예시
 
-from langchain.llms import OpenAI
-
-llm = OpenAI(temperature=0.9)
-text = "what would be a good company name for a company that makes colorful socks?"
-print(llm(text))
+    from langchain.llms import OpenAI
+    
+    llm = OpenAI(temperature=0.9)
+    text = "what would be a good company name for a company that makes colorful socks?"
+    print(llm(text))
 
 
 ChatOpenAi 를 사용하는 예시
 
-from langchain.chat_models import ChatOpenAI
-from langchain.schema import (
-    HumanMessage,
-    SystemMessage
-)
-
-chat = ChatOpenAI(temperature=0.8)
-
-# 여러개로 제너레이팅 가능
-    more_messages = [
-    [
-        SystemMessage(content="You are a helpful assistant that translate English to Korean"),
-        HumanMessage(content="Translate this sentence from English to Korean. I love programming.")
-    ],
-    [
-        SystemMessage(content="You are a helpful assistant that translate English to Korean"),
-        HumanMessage(content="Translate this sentence from English to Korean. I hate programming.")
-    ],
-    [
-        SystemMessage(content="You are a helpful assistant that translate English to Korean"),
-        HumanMessage(content="Translate this sentence from English to Korean. I do programming.")
-    ]
-    ]
-
-    result = chat.generate(more_messages)
-
-
-    **output**
+    from langchain.chat_models import ChatOpenAI
+    from langchain.schema import (
+        HumanMessage,
+        SystemMessage
+    )
     
-    generations=[[ChatGeneration(text='저는 프로그래밍을 사랑합니다.', generation_info={'finish_reason': 'stop'}, message=AIMessage(content='저는 프로그래밍을 사랑합니다.', additional_kwargs={}, example=False))], [ChatGeneration(text='나는 프로그래밍을 싫어해요.', generation_info={'finish_reason': 'stop'}, message=AIMessage(content='나는 프로그래밍을 싫어해요.', additional_kwargs={}, example=False))], [ChatGeneration(text='저는 프로그래밍을 합니다.', generation_info={'finish_reason': 'stop'}, message=AIMessage(content='저는 프로그래밍을 합니다.', additional_kwargs={}, example=False))]] llm_output={'token_usage': {'prompt_tokens': 99, 'completion_tokens': 40, 'total_tokens': 139}, 'model_name': 'gpt-3.5-turbo'} run=[RunInfo(run_id=UUID('4d03f852-e940-4c22-935a-ed58ff8fa956')), RunInfo(run_id=UUID('e3703ca4-92df-4da6-90fa-dd835f8e8c5e')), RunInfo(run_id=UUID('51d9e894-44a2-4704-b67a-d38b953efab4'))]
-    print(result)
+    chat = ChatOpenAI(temperature=0.8)
     
+    # 여러개로 제너레이팅 가능
+        more_messages = [
+        [
+            SystemMessage(content="You are a helpful assistant that translate English to Korean"),
+            HumanMessage(content="Translate this sentence from English to Korean. I love programming.")
+        ],
+        [
+            SystemMessage(content="You are a helpful assistant that translate English to Korean"),
+            HumanMessage(content="Translate this sentence from English to Korean. I hate programming.")
+        ],
+        [
+            SystemMessage(content="You are a helpful assistant that translate English to Korean"),
+            HumanMessage(content="Translate this sentence from English to Korean. I do programming.")
+        ]
+        ]
+    
+        result = chat.generate(more_messages)
+    
+    
+        **output**
+        
+        generations=[[ChatGeneration(text='저는 프로그래밍을 사랑합니다.', generation_info={'finish_reason': 'stop'}, message=AIMessage(content='저는 프로그래밍을 사랑합니다.', additional_kwargs={}, example=False))], [ChatGeneration(text='나는 프로그래밍을 싫어해요.', generation_info={'finish_reason': 'stop'}, message=AIMessage(content='나는 프로그래밍을 싫어해요.', additional_kwargs={}, example=False))], [ChatGeneration(text='저는 프로그래밍을 합니다.', generation_info={'finish_reason': 'stop'}, message=AIMessage(content='저는 프로그래밍을 합니다.', additional_kwargs={}, example=False))]] llm_output={'token_usage': {'prompt_tokens': 99, 'completion_tokens': 40, 'total_tokens': 139}, 'model_name': 'gpt-3.5-turbo'} run=[RunInfo(run_id=UUID('4d03f852-e940-4c22-935a-ed58ff8fa956')), RunInfo(run_id=UUID('e3703ca4-92df-4da6-90fa-dd835f8e8c5e')), RunInfo(run_id=UUID('51d9e894-44a2-4704-b67a-d38b953efab4'))]
+        print(result)
+        
     
 
 3. openAi 사용 요금 조회
@@ -139,6 +139,8 @@ chat = ChatOpenAI(temperature=0.8)
         chat = f.read()
     
     print(summary_doc_chain.run(chat))
+
+
 
 output parser 를 사용하는 예시
 
